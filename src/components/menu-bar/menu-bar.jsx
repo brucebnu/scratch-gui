@@ -49,7 +49,7 @@ const MenuBar = props => (
                 />
                 <span className={styles.feedbackText}>
                     <FormattedMessage
-                        defaultMessage="Tips"
+                        defaultMessage="How Tos"
                         description="Label for tip button in menu bar"
                         id="gui.menuBar.tips"
                     />
