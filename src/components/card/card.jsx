@@ -25,6 +25,7 @@ import step_forever from './zoom/forever.gif';
 import step_move from './zoom/move.gif';
 import step_color from './zoom/color.gif';
 import step_loudness from './zoom/loudness.gif';
+import make_noise from './zoom/make-noise.gif';
 import step_edge from './zoom/edge.gif';
 import step_greenflag from './zoom/green-flag.gif';
 import step_stop from './zoom/stop.gif';
@@ -180,11 +181,14 @@ class Card extends React.Component {
                             title: "Experiment with color effect block",
                             image: step_color,
                         }, {
-                            title: "🗣 Use the loudness block and make some noise!",
+                            title: "Add the loudness block",
                             image: step_loudness,
                         }, {
                             title: "Bounce when you reach the edge",
                             image: step_edge,
+                        }, {
+                            title: "🗣 Make some noise!",
+                            image: make_noise,
                         }, {
                             title: "Add a green flag block to the top",
                             image: step_greenflag,
@@ -195,7 +199,7 @@ class Card extends React.Component {
                             title: "Tinker!",
                             image: step_zoom,
                         }
-                        ]
+                    ]
                 },
                 'Tell a story' : {
                     name: 'Tell a story',
