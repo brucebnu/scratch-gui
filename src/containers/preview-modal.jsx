@@ -2,10 +2,10 @@ import bindAll from 'lodash.bindall';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {connect} from 'react-redux';
-import platform from 'platform';
+
+import tabletFullScreen from '../lib/tablet-full-screen';
 
 import PreviewModalComponent from '../components/preview-modal/preview-modal.jsx';
-import BrowserModalComponent from '../components/browser-modal/browser-modal.jsx';
 
 import {
     closePreviewInfo,
@@ -27,6 +27,8 @@ class PreviewModal extends React.Component {
     }
     handleTryIt () {
         this.setState({previewing: true});
+        // try to run in fullscreen mode on tablets.
+        tabletFullScreen();
         this.props.onTryIt();
     }
     handleCancel () {
@@ -35,30 +37,28 @@ class PreviewModal extends React.Component {
     handleViewProject () {
         this.props.onViewProject();
     }
-    supportedBrowser () {
-        return !['IE', 'Opera', 'Opera Mini', 'Silk', 'Vivaldi'].includes(platform.name);
-    }
     render () {
-        return (this.supportedBrowser() ?
+        return (
             <PreviewModalComponent
+                isRtl={this.props.isRtl}
                 previewing={this.state.previewing}
                 onCancel={this.handleCancel}
                 onTryIt={this.handleTryIt}
                 onViewProject={this.handleViewProject}
-            /> :
-            <BrowserModalComponent
-                onBack={this.handleCancel}
             />
         );
     }
 }
 
 PreviewModal.propTypes = {
+    isRtl: PropTypes.bool,
     onTryIt: PropTypes.func,
     onViewProject: PropTypes.func
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({
+    isRtl: state.locales.isRtl
+});
 
 const mapDispatchToProps = dispatch => ({
     onTryIt: () => {
